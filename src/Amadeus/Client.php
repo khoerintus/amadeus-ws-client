@@ -43,29 +43,29 @@ class Client extends Base
     /**
      * Amadeus SOAP header version 1
      */
-    const HEADER_V1 = "1";
+    public const HEADER_V1 = "1";
     /**
      * Amadeus SOAP header version 2
      */
-    const HEADER_V2 = "2";
+    public const HEADER_V2 = "2";
     /**
      * Amadeus SOAP header version 4
      */
-    const HEADER_V4 = "4";
+    public const HEADER_V4 = "4";
 
     /**
      * Version string
      *
      * @var string
      */
-    const VERSION = "1.14.0-dev";
+    public const VERSION = "1.14.0-dev";
 
     /**
      * An identifier string for the library (to be used in Received From entries)
      *
      * @var string
      */
-    const RECEIVED_FROM_IDENTIFIER = "amabnl-amadeus-ws-client";
+    public const RECEIVED_FROM_IDENTIFIER = "amabnl-amadeus-ws-client";
 
     /**
      * @var string
@@ -583,6 +583,25 @@ class Client extends Base
     public function offerConfirmCar(RequestOptions\OfferConfirmCarOptions $options, $messageOptions = [])
     {
         $msgName = 'Offer_ConfirmCarOffer';
+
+        return $this->callMessage($msgName, $options, $messageOptions);
+    }
+
+    /**
+     * Fare_InstantTravelBoardSearch
+     *
+     * @param RequestOptions\FareInstantTbSearch $options
+     * @param array $messageOptions (OPTIONAL)
+     * @return Result
+     * @throws Client\InvalidMessageException
+     * @throws Client\RequestCreator\MessageVersionUnsupportedException
+     * @throws Exception
+     */
+    public function fareInstantTravelBoardSearch(
+        RequestOptions\FareInstantTbSearch $options,
+        $messageOptions = []
+    ) {
+        $msgName = 'Fare_InstantTravelBoardSearch';
 
         return $this->callMessage($msgName, $options, $messageOptions);
     }
